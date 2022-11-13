@@ -1,0 +1,1 @@
+// This folder contains methods for interacting with the (mock) database
