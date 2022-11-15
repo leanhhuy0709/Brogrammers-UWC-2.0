@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "HCM City University of Technology 1"
+    },
+    {
+      "id": 2,
+      "name": "Hoa Hao Dormitory"
+    },
+    {
+      "id": 3,
+      "name": "Zone A Dormitory VNUHCM"
+    },
+    {
+      "id": 4,
+      "name": "Zone B Dormitory VNUHCM"
+    },
+    {
+      "id": 5,
+      "name": "HCM City University of Technology 2"
+    },
+    {
+      "id": 6,
+      "name": "HCM University of Economics and Law"
+    }
+  ]
+}

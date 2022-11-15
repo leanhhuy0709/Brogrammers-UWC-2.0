@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "id": "072000001234",
+      "username": "Thanos3000",
+      "position": 0,
+      "avatar": "https://i.ytimg.com/vi/N2YTmooNR8E/maxresdefault.jpg",
+      "status": 1,
+      "memberSince": "01/01/2020"
+    },
+    {
+      "id": "012200306789",
+      "username": "SpiderMan5000",
+      "position": 0,
+      "avatar": "https://www.lego.com/cdn/cs/set/assets/blt13e6e2a178c38704/Spiderman-Sidekick-Tall-1.jpg?fit=crop&format=jpg&quality=80&width=800&height=600&dpr=1",
+      "status": 0,
+      "memberSince": "10/07/2021"
+    }
+  ]
+}
