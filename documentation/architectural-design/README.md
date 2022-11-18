@@ -5,25 +5,25 @@
 ### 1.1 Assign vehicle
 
 <p align="center">
-	<img src="./activity-diagram/assign-vehicle.png" width="70%">
+	<img src="./activity-diagram/assign-vehicle.png" width="50%">
 </p>
 
 ### 1.2 Assign task
 
 <p align="center">
-	<img src="./activity-diagram/assign-task.png" width="70%">
+	<img src="./activity-diagram/assign-task.png" width="60%">
 </p>
 
 ### 1.3 Create route
 
 <p align="center">
-	<img src="./activity-diagram/create-route.png" width="70%">
+	<img src="./activity-diagram/create-route.png" width="50%">
 </p>
 
 ## 2. Sequence diagram
 
 <p align="center">
-	<img src="./sequence-diagram/route-planning.png" width="70%">
+	<img src="./sequence-diagram/route-planning.png" width="60%">
 </p>
 
 Giải pháp cho công việc route planning:
@@ -38,7 +38,7 @@ Giải pháp cho công việc route planning:
 ### 3.1 Assign vehicle
 
 <p align="center">
-	<img src="./class-diagram/assign-vehicle.png" width="70%">
+	<img src="./class-diagram/assign-vehicle.png" width="60%">
 </p>
 
 **Mô tả:**        
@@ -50,7 +50,7 @@ Giải pháp cho công việc route planning:
 ### 3.2 Assign task
 
 <p align="center">
-	<img src="./class-diagram/assign-task.png" width="70%">
+	<img src="./class-diagram/assign-task.png" width="60%">
 </p>
 
 **Mô tả:**
@@ -61,7 +61,7 @@ Giải pháp cho công việc route planning:
 ### 3.3 Create route
 
 <p align="center">
-	<img src="./class-diagram/create-route.png" width="60%">
+	<img src="./class-diagram/create-route.png" width="40%">
 </p>
 
 **Mô tả:**
