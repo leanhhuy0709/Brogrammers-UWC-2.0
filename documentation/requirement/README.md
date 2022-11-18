@@ -1,4 +1,4 @@
-# Requirement elicitation
+# Requirement Elicitation
 
 ## 1. Yêu cầu của hệ thống (requirement)
 
@@ -46,15 +46,15 @@
 ## 2. Usecase diagram
 
 <p align="center">
-	<img src="./whole-system.png" 
-    alt="Whole system" width="90%">
+	<img src="./usecase-diagram/whole-system.png" 
+    alt="Whole system" width="70%">
 </p>
 
 ### 2.1 Assign vehicle
 
 <p align="center">
-	<img src="./assign-vehicle.png" 
-    alt="Assign vehicle"  width="90%">>
+	<img src="./usecase-diagram/assign-vehicle.png" 
+    alt="Assign vehicle"  width="60%">
 </p>
 
 
@@ -75,8 +75,8 @@
 ### 2.2 Assign task
 
 <p align="center">
-	<img src="./assign-task.png" 
-    alt="Assign task"  width="90%">>
+	<img src="./usecase-diagram/assign-task.png" 
+    alt="Assign task"  width="60%">
 </p>
 
 <center>
@@ -95,8 +95,8 @@
 ### 2.3 Create route
 
 <p align="center">
-	<img src="./create-route.png" 
-    alt="Create route"  width="90%">>
+	<img src="./usecase-diagram/create-route.png" 
+    alt="Create route"  width="60%">
 </p>
 
 <center>
