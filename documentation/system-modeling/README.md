@@ -5,7 +5,7 @@
 ### 1.1 Architectural approach
 
 <p align="center">
-	<img src="./mvc.png" width="70%">
+	<img src="./mvc.png" width="50%">
 </p>
 
 Mô hình MVC có ba thành phần chính:
