@@ -1,28 +1,43 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import GlobalContext from "./context/GlobalContext"
+import {useContext} from "react";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import Home from "./components/home/Home";
+import Profile from "./components/profile/Profile";
+import EmployeesList from "./components/employeesList/EmployeesList";
+import EmployeeProfile from "./components/employeeProfile/EmployeeProfile";
+import AssignTask from "./components/assignTask/AssignTask";
+import Chat from "./components/chat/Chat";
+import TrucksList from "./components/trucksList/TrucksList";
+import TrollersList from "./components/trollersList/TrollersList";
+import MCPsList from "./components/mcpsList/MCPsList";
+import Login from "./components/login/Login";
+import ForgotPassword from "./components/forgotPassword/ForgotPassword";
+import ResetPassword from "./components/resetPassword/ResetPassword";
+import ErrorPage from "./components/errorPage/ErrorPage";
 
 function App() {
-  const user = {};
-
+  const  { user } = useContext(GlobalContext);
+  
   return (
     <Router>
-      {user ? (
-        <ProtectedRoutes>
+      <Routes>
+        <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<Home />} />
-          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/emp-list" element={<EmployeesList />} />
           <Route path="/emp-info/:id" element={<EmployeeProfile />} />
           <Route path="/assign" element={<AssignTask />} />
           <Route path="/chat/:id" element={<Chat />} />
-          <Route path="/vehicle-list" element={<VehiclesList />} />
-          <Route path="/mcp-list" element={<MCPsList />} />
-        </ProtectedRoutes>
-      ) : (
-        <Login />
-      )}
-      <Route path="/login" element={user ? <Home /> : <Login />} />
-      <Route path="/forgot" element={user ? <Home /> : <ForgotPassword />} />
-      <Route path="/reset" element={user ? <Home /> : <ResetPassword />} />
-      <Route path="/*" element={<ErrorPage />} />
+          <Route path="/vehicles/trucks" element={<TrucksList />} />
+          <Route path="/vehicles/trollers" element={<TrollersList />} />
+          <Route path="/mcps" element={<MCPsList />} />
+        </Route>
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        <Route path="/forgot" element={user ? <Navigate to="/" /> : <ForgotPassword />} />
+        <Route path="/reset" element={user ? <Navigate to="/" /> : <ResetPassword />} />
+        <Route path="/*" element={<ErrorPage />} />
+      </Routes>
     </Router>
   );
 }
