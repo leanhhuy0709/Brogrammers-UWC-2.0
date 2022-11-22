@@ -36,19 +36,35 @@ const BaseAPI = {
     },
 
     order_by(prob, reverse=false) {
+        const datetimePattern = /(\d{2})\/(\d{2})\/(\d{4}), (\d{2}):(\d{2}):(\d{2})/
+        const datePattern = /(\d{2})\/(\d{2})\/(\d{4})/
+
         if(!this.has_property(prob))
             throw new Error(`${this.name} object do not have property "${prob}"`)
 
-        this.querySet.sort((a,b) => {
-            // check timestamp
-            if(false) {
-                const t1 = new Date(a[prob])
-                const t2 = new Date(b[prob])
-                return t1 < t2
+        this.querySet.sort(function(a,b) {
+            if(datetimePattern.test(a[prob])) {
+                const [,day1,mon1,year1,hour1,min1,sec1] = datetimePattern.exec(a[prob])
+                const t1 = new Date(year1,mon1-1,day1,hour1,min1,sec1)
+
+                const [,day2,mon2,year2,hour2,min2,sec2] = datetimePattern.exec(b[prob])   
+                const t2 = new Date(year2,mon2-1,day2,hour2,min2,sec2)
+                
+                return t1.getTime() - t2.getTime()
+
+            } else if(datePattern.test(a[prob])) {
+                const [,day1,mon1,year1] = datePattern.exec(a[prob])
+                const t1 = new Date(year1,mon1-1,day1)
+
+                const [,day2,mon2,year2] = datePattern.exec(b[prob])   
+                const t2 = new Date(year2,mon2-1,day2)
+                
+                return t1.getTime() - t2.getTime()
+
             } else {
-                return a[prob] < b[prob]
+                return a[prob] - b[prob]
             }
-        })
+        });
 
         if(reverse) this.querySet.reverse()
         return this.querySet
@@ -56,31 +72,82 @@ const BaseAPI = {
 }
 
 
+const ActivityAPI = {
+    name: 'Activity',
+    querySet: data.activity,
+}
+Object.setPrototypeOf(ActivityAPI,BaseAPI)
+
+
 const BackOfficerAPI = {
     name: 'BackOfficer',
     querySet: data.backOfficer,
-    __proto__: BaseAPI,
 }
+Object.setPrototypeOf(BackOfficerAPI,BaseAPI)
+
+
+const CollectingVehicleAPI = {
+    name: 'CollectingVehicle',
+    querySet: data.collectingVehicle,
+}
+Object.setPrototypeOf(CollectingVehicleAPI,BaseAPI)
+
+
+const CollectorAPI = {
+    name: 'Collector',
+    querySet: data.collector,
+}
+Object.setPrototypeOf(CollectorAPI,BaseAPI)
+
+
+const JanitorAPI = {
+    name: 'Janitor',
+    querySet: data.janitor,
+}
+Object.setPrototypeOf(JanitorAPI,BaseAPI)
+
 
 const mcpAPI = {
     name: 'MCP',
     querySet: data.mcp,
-    __proto__: BaseAPI,
 }
+Object.setPrototypeOf(mcpAPI,BaseAPI)
+
+
+const MessageAPI = {
+    name: 'Message',
+    querySet: data.message,
+}
+Object.setPrototypeOf(MessageAPI,BaseAPI)
+
+
+const RouteAPI = {
+    name: 'Route',
+    querySet: data.route,
+}
+Object.setPrototypeOf(RouteAPI,BaseAPI)
+
+
+const TrollerAPI = {
+    name: 'Troller',
+    querySet: data.troller,
+}
+Object.setPrototypeOf(TrollerAPI,BaseAPI)
+
 
 
 
 // -----------------Test-----------------
-// --get all records--
+// --get all records
 // console.log(BackOfficerAPI.all());   
 
-// --get record by id--
+// --get record by id
 // console.log(BackOfficerAPI.get_by_id("100020003000"))
 
 // --check whether record has property
 // console.log(mcpAPI.has_property('percentage'))
 
-// --filter--
+// --filter 
 // try {
 //     console.log(mcpAPI.filter({"percentage": 70, 'a':1}))
 // } catch (error) {
@@ -89,7 +156,9 @@ const mcpAPI = {
 
 // console.log(mcpAPI.filter({"percentage": 80}))
 
-// --sort--
+// --sort
 // console.log(mcpAPI.order_by('percentage',true));
 
 // console.log(mcpAPI.order_by('lastCollected'));
+
+// console.log(BackOfficerAPI.order_by('memberSince'));
