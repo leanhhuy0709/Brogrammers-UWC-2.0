@@ -116,7 +116,13 @@ Object.setPrototypeOf(mcpAPI,BaseAPI)
 
 const MessageAPI = {
     name: 'Message',
-    querySet: data.message,
+    querySet: data.messages,
+
+    get_by_users(userId1, userId2) {
+        return this.querySet.find((msg) => 
+            msg.users.includes(userId1) && msg.users.includes(userId2)
+        )
+    }
 }
 Object.setPrototypeOf(MessageAPI,BaseAPI)
 
