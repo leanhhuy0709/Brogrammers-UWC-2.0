@@ -1,5 +1,3 @@
-// This folder contains methods for interacting with the (mock) database
-
 import data from '../data/data.js'
 
 const BaseAPI = {
@@ -140,7 +138,7 @@ const TrollerAPI = {
 }
 Object.setPrototypeOf(TrollerAPI,BaseAPI)
 
-
+export {ActivityAPI, BackOfficerAPI, CollectingVehicleAPI, CollectorAPI, JanitorAPI, mcpAPI, MessageAPI, RouteAPI, TrollerAPI};
 
 
 // -----------------Test-----------------
