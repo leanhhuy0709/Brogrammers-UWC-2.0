@@ -30,7 +30,6 @@ const data = {
     'messages': messagesData,
     'route': routeData,
     'troller': trollerData,
-    
 }
 
 export default data
