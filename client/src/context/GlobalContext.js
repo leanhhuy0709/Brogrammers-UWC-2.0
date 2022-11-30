@@ -7,7 +7,7 @@ export const GlobalContextProvider = ({ children }) => {
 
   const user = getLoggedInUser();      // dummy user object (if logged in), change it to false to see protectedRoutes being protected
   
-  return <GlobalContext.Provider value={{user}}>
+  return <GlobalContext.Provider value={{ user }}>
     {children}
   </GlobalContext.Provider>;
 };

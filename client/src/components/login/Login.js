@@ -44,7 +44,9 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <i className="fas fa-eye-slash"></i>
         {errorMessage ? <p>{errorMessage}</p> : null}
+        <a href="/forgot">Forgot your password?</a>
         <button type="submit">Login</button>
       </form>
     </div>
