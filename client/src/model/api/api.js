@@ -6,9 +6,9 @@ const BaseAPI = {
     },
 
     has_property(prob) {
-        if(!this.querySet || this.querySet.length === 0) 
+        if (!this.querySet || this.querySet.length === 0)
             return false
-        if(!this.querySet[0].hasOwnProperty(prob))
+        if (!this.querySet[0].hasOwnProperty(prob))
             return false
         return true
     },
@@ -18,17 +18,17 @@ const BaseAPI = {
     },
 
     filter(probs) {
-        for(let key in probs) {
-            if(!this.has_property(key))            
+        for (let key in probs) {
+            if (!this.has_property(key))
                 throw new Error(`${this.name} object do not have property "${key}"`)
         }
 
-        const qs = this.querySet.filter(ele => {    
-                for(let key in probs) 
-                    if(probs[key] !== ele[key])
-                        return false
-                return true
-            })
+        const qs = this.querySet.filter(ele => {
+            for (let key in probs)
+                if (probs[key] !== ele[key])
+                    return false
+            return true
+        })
 
         return qs
     },
@@ -56,7 +56,6 @@ const BaseAPI = {
 
                 const [,day2,mon2,year2] = datePattern.exec(b[prob])   
                 const t2 = new Date(year2,mon2-1,day2)
-                
                 return t1.getTime() - t2.getTime()
 
             } else {
@@ -64,7 +63,7 @@ const BaseAPI = {
             }
         });
 
-        if(reverse) this.querySet.reverse()
+        if (reverse) this.querySet.reverse()
         return this.querySet
     },
 }
@@ -74,42 +73,42 @@ const ActivityAPI = {
     name: 'Activity',
     querySet: data.activity,
 }
-Object.setPrototypeOf(ActivityAPI,BaseAPI)
+Object.setPrototypeOf(ActivityAPI, BaseAPI)
 
 
 const BackOfficerAPI = {
     name: 'BackOfficer',
     querySet: data.backOfficer,
 }
-Object.setPrototypeOf(BackOfficerAPI,BaseAPI)
+Object.setPrototypeOf(BackOfficerAPI, BaseAPI)
 
 
 const CollectingVehicleAPI = {
     name: 'CollectingVehicle',
     querySet: data.collectingVehicle,
 }
-Object.setPrototypeOf(CollectingVehicleAPI,BaseAPI)
+Object.setPrototypeOf(CollectingVehicleAPI, BaseAPI)
 
 
 const CollectorAPI = {
     name: 'Collector',
     querySet: data.collector,
 }
-Object.setPrototypeOf(CollectorAPI,BaseAPI)
+Object.setPrototypeOf(CollectorAPI, BaseAPI)
 
 
 const JanitorAPI = {
     name: 'Janitor',
     querySet: data.janitor,
 }
-Object.setPrototypeOf(JanitorAPI,BaseAPI)
+Object.setPrototypeOf(JanitorAPI, BaseAPI)
 
 
 const mcpAPI = {
     name: 'MCP',
     querySet: data.mcp,
 }
-Object.setPrototypeOf(mcpAPI,BaseAPI)
+Object.setPrototypeOf(mcpAPI, BaseAPI)
 
 
 const MessageAPI = {
@@ -117,33 +116,46 @@ const MessageAPI = {
     querySet: data.messages,
 
     get_by_users(userId1, userId2) {
-        return this.querySet.find((msg) => 
+        return this.querySet.find((msg) =>
             msg.users.includes(userId1) && msg.users.includes(userId2)
         )
     }
 }
-Object.setPrototypeOf(MessageAPI,BaseAPI)
+Object.setPrototypeOf(MessageAPI, BaseAPI)
 
 
 const RouteAPI = {
     name: 'Route',
     querySet: data.route,
 }
-Object.setPrototypeOf(RouteAPI,BaseAPI)
+Object.setPrototypeOf(RouteAPI, BaseAPI)
 
 
 const TrollerAPI = {
     name: 'Troller',
     querySet: data.troller,
 }
-Object.setPrototypeOf(TrollerAPI,BaseAPI)
+Object.setPrototypeOf(TrollerAPI, BaseAPI)
 
-export {ActivityAPI, BackOfficerAPI, CollectingVehicleAPI, CollectorAPI, JanitorAPI, mcpAPI, MessageAPI, RouteAPI, TrollerAPI};
+const api = {
+    'ActivityAPI': ActivityAPI,
+    'BackOfficerAPI': BackOfficerAPI,
+    'CollectingVehicleAPI': CollectingVehicleAPI,
+    'CollectorAPI': CollectorAPI,
+    'JanitorAPI': JanitorAPI,
+    'mcpAPI': mcpAPI,
+    'MessageAPI': MessageAPI,
+    'RouteAPI': RouteAPI,
+    'TrollerAPI': TrollerAPI,
+}
+
+export default api
+
 
 
 // -----------------Test-----------------
 // --get all records
-// console.log(BackOfficerAPI.all());   
+// console.log(BackOfficerAPI.all());
 
 // --get record by id
 // console.log(BackOfficerAPI.get_by_id("100020003000"))
@@ -151,7 +163,7 @@ export {ActivityAPI, BackOfficerAPI, CollectingVehicleAPI, CollectorAPI, Janitor
 // --check whether record has property
 // console.log(mcpAPI.has_property('percentage'))
 
-// --filter 
+// --filter
 // try {
 //     console.log(mcpAPI.filter({"percentage": 70, 'a':1}))
 // } catch (error) {

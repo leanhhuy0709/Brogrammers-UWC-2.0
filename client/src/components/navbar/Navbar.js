@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../../context/GlobalContext';
 import { useNavigate } from 'react-router-dom';
-
 const Navbar = () => {
 
   const navigate = useNavigate();
@@ -36,4 +35,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;
