@@ -4,37 +4,43 @@
       "id": "1",
       "name": "HCM City University of Technology 1",
       "percentage": 80,
-      "lastCollected": "20/12/2021, 02:00:00"
+      "lastCollected": "20/12/2021, 02:00:00",
+      "location": {"lat": 10.772094, "lng": 106.657865}
     },
     {
       "id": "2",
       "name": "Hoa Hao Dormitory",
       "percentage": 100,
-      "lastCollected": "20/12/2021, 04:00:00"
+      "lastCollected": "20/12/2021, 04:00:00",
+      "location": {"lat": 10.760115, "lng": 106.662214}
     },
     {
       "id": "3",
       "name": "Zone A Dormitory VNUHCM",
       "percentage": 60,
-      "lastCollected": "20/12/2021, 03:00:00"
+      "lastCollected": "20/12/2021, 03:00:00",
+      "location": {"lat": 10.878325, "lng": 106.806276}
     },
     {
       "id": "4",
       "name": "Zone B Dormitory VNUHCM",
       "percentage": 80,
-      "lastCollected": "20/12/2021, 05:00:00"
+      "lastCollected": "20/12/2021, 05:00:00",
+      "location": {"lat": 10.882122, "lng": 106.782879}
     },
     {
       "id": "5",
       "name": "HCM City University of Technology 2",
       "percentage": 100,
-      "lastCollected": "20/11/2021, 07:00:00"
+      "lastCollected": "20/11/2021, 07:00:00",
+      "location": {"lat": 10.880769, "lng": 106.805365}
     },
     {
       "id": "6",
       "name": "HCM University of Economics and Law",
       "percentage": 80,
-      "lastCollected": "20/12/2021, 06:00:00"
+      "lastCollected": "20/12/2021, 06:00:00",
+      "location": {"lat": 10.871082, "lng": 106.778474}
     }
   ]
 }
