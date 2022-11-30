@@ -149,6 +149,8 @@ const api = {
     'TrollerAPI': TrollerAPI,
 }
 
+export {ActivityAPI, BackOfficerAPI, CollectingVehicleAPI, CollectorAPI, JanitorAPI, mcpAPI, MessageAPI, RouteAPI, TrollerAPI}
+
 export default api
 
 
