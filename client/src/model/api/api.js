@@ -1,5 +1,3 @@
-// This folder contains methods for interacting with the (mock) database
-
 import data from '../data/data.js'
 
 const BaseAPI = {
@@ -35,30 +33,29 @@ const BaseAPI = {
         return qs
     },
 
-    order_by(prob, reverse = false) {
+    order_by(prob, reverse=false) {
         const datetimePattern = /(\d{2})\/(\d{2})\/(\d{4}), (\d{2}):(\d{2}):(\d{2})/
         const datePattern = /(\d{2})\/(\d{2})\/(\d{4})/
 
-        if (!this.has_property(prob))
+        if(!this.has_property(prob))
             throw new Error(`${this.name} object do not have property "${prob}"`)
 
-        this.querySet.sort(function (a, b) {
-            if (datetimePattern.test(a[prob])) {
-                const [, day1, mon1, year1, hour1, min1, sec1] = datetimePattern.exec(a[prob])
-                const t1 = new Date(year1, mon1 - 1, day1, hour1, min1, sec1)
+        this.querySet.sort(function(a,b) {
+            if(datetimePattern.test(a[prob])) {
+                const [,day1,mon1,year1,hour1,min1,sec1] = datetimePattern.exec(a[prob])
+                const t1 = new Date(year1,mon1-1,day1,hour1,min1,sec1)
 
-                const [, day2, mon2, year2, hour2, min2, sec2] = datetimePattern.exec(b[prob])
-                const t2 = new Date(year2, mon2 - 1, day2, hour2, min2, sec2)
-
+                const [,day2,mon2,year2,hour2,min2,sec2] = datetimePattern.exec(b[prob])   
+                const t2 = new Date(year2,mon2-1,day2,hour2,min2,sec2)
+                
                 return t1.getTime() - t2.getTime()
 
-            } else if (datePattern.test(a[prob])) {
-                const [, day1, mon1, year1] = datePattern.exec(a[prob])
-                const t1 = new Date(year1, mon1 - 1, day1)
+            } else if(datePattern.test(a[prob])) {
+                const [,day1,mon1,year1] = datePattern.exec(a[prob])
+                const t1 = new Date(year1,mon1-1,day1)
 
-                const [, day2, mon2, year2] = datePattern.exec(b[prob])
-                const t2 = new Date(year2, mon2 - 1, day2)
-
+                const [,day2,mon2,year2] = datePattern.exec(b[prob])   
+                const t2 = new Date(year2,mon2-1,day2)
                 return t1.getTime() - t2.getTime()
 
             } else {
