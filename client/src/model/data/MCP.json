@@ -41,6 +41,24 @@
       "percentage": 80,
       "lastCollected": "20/12/2021, 06:00:00",
       "location": {"lat": 10.871082, "lng": 106.778474}
+    },
+    {
+      "id": "7",
+      "name": "621 store",
+      "percentage": 100,
+      "lastCollected": "04/10/2022, 09:30:00"
+    },
+    {
+      "id": "8",
+      "name": "Creative Square",
+      "percentage": 0,
+      "lastCollected": "07/10/2022, 06:30:00"
+    },
+    {
+      "id": "9",
+      "name": "HCM University of Science",
+      "percentage": 65,
+      "lastCollected": "08/11/2022, 09:30:00"
     }
   ]
 }

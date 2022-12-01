@@ -13,7 +13,6 @@ import TrollersList from "./components/trollersList/TrollersList";
 import MCPsList from "./components/mcpsList/MCPsList";
 import Login from "./components/login/Login";
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
-import ResetPassword from "./components/resetPassword/ResetPassword";
 import ErrorPage from "./components/errorPage/ErrorPage";
 
 function App() {
@@ -35,7 +34,6 @@ function App() {
         </Route>
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route path="/forgot" element={user ? <Navigate to="/" /> : <ForgotPassword />} />
-        <Route path="/reset" element={user ? <Navigate to="/" /> : <ResetPassword />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </Router>
