@@ -3,7 +3,7 @@ import Navbar from '../navbar/Navbar';
 import data from '../../model/api/api';
 
 const AssignTask = () => {
-  const [collectingVehicles, setCollecingVehicles] = useState(data.CollectingVehicleAPI.all())
+  const [trucks, setTrucks] = useState(data.TruckAPI.all())
   const [collectors, setCollectors] = useState(data.CollectorAPI.all())
   const [routes, setRoutes] = useState(() => {
     return data.RouteAPI.all().map((route) => {
@@ -41,8 +41,8 @@ const AssignTask = () => {
 
           <label htmlFor="vehicles">VehicleID:</label>
           <select name="vehicles" id="vehicles">
-            {!collectingVehicles.length ? <></>:
-              collectingVehicles.map((vehicle, index) => 
+            {!trucks.length ? <></>:
+              trucks.map((vehicle, index) => 
               (<option key={index} value={vehicle.id}>{vehicle.id}</option>))}
           </select> 
 
