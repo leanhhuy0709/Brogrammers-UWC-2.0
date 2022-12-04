@@ -34,7 +34,7 @@ const ForgotPassword = () => {
 
   return (
     sent ? (<EmailSent />) : (<div className="container">
-    <h1>Password reset</h1>
+    <h1>Forgot password</h1>
     <p>Enter your email below. You will receive a email with a link to reset your password.</p>
     <form onSubmit={(e) => handleSendEmail(e)}>
       <label htmlFor="emailInput">Email</label>

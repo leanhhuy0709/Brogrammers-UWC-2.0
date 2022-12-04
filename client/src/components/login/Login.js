@@ -11,8 +11,8 @@ const Login = () => {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const user = validateLogin(username, password);
-    if (user) {
+    const {user, status} = validateLogin(username, password);
+    if (status) {
       setUsername("");
       setPassword("");
       localStorage.setItem("userId", user.id);
@@ -36,7 +36,7 @@ const Login = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="passwordInput">Username</label>
+        <label htmlFor="passwordInput">Password</label>
         <input
           required
           type="password"
@@ -44,9 +44,8 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <i className="fas fa-eye-slash"></i>
         {errorMessage ? <p>{errorMessage}</p> : null}
-        <a href="/forgot">Forgot your password?</a>
+        <p>Forgot your password? <a href="/forgot">Reset password?</a></p>
         <button type="submit">Login</button>
       </form>
     </div>
