@@ -9,11 +9,11 @@ const EmailSent = () => {
   }
 
   return (
-    <div className="container">
+    <div className="login">
       <h1>Email sent.</h1>
       <p>If the email you entered is valid, you should receive an email with a link to reset your password shortly. Check your <strong>"Spam"</strong> folder if you can't see the email.</p>
       <h6>Did not receive the email?</h6>
-      <button onClick={() => resendEmail()}>Resend Email</button>
+      <button onClick={() => resendEmail()} className = "button width400px">Resend Email</button>
     </div>
   )
 }
@@ -33,7 +33,7 @@ const ForgotPassword = () => {
   }
 
   return (
-    sent ? (<EmailSent />) : (<div className="container">
+    sent ? (<EmailSent />) : (<div className="login">
     <h1>Forgot password</h1>
     <p>Enter your email below. You will receive a email with a link to reset your password.</p>
     <form onSubmit={(e) => handleSendEmail(e)}>
@@ -44,8 +44,10 @@ const ForgotPassword = () => {
         id="emailInput"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className = "input"
       />
-      <button type="submit">Submit</button>
+      <br/>
+      <button type="submit" className = "button width400px">Submit</button>
     </form>
   </div>)
   )
