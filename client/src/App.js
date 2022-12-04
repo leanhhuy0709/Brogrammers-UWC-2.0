@@ -14,10 +14,10 @@ import MCPsList from "./components/mcpsList/MCPsList";
 import Login from "./components/login/Login";
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import ErrorPage from "./components/errorPage/ErrorPage";
+import Conversation from "./components/conversation/Conversation";
 
 function App() {
-  const  { user } = useContext(GlobalContext);
-  
+  const  { user} = useContext(GlobalContext);
   return (
     <Router>
       <Routes>
@@ -27,7 +27,8 @@ function App() {
           <Route path="/emp-list" element={<EmployeesList />} />
           <Route path="/emp-info/:id" element={<EmployeeProfile />} />
           <Route path="/assign" element={<AssignTask />} />
-          <Route path="/chat/:id" element={<Chat />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/conversation/:id" element={<Conversation />} />
           <Route path="/vehicles/trucks" element={<TrucksList />} />
           <Route path="/vehicles/trollers" element={<TrollersList />} />
           <Route path="/mcps" element={<MCPsList />} />

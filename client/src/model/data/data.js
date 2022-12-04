@@ -1,7 +1,7 @@
 // This folder is for .json files
 import activity from './Activity.json'
 import backOfficer from './BackOfficer.json'
-import collectingVehicle from './CollectingVehicle.json'
+import truck from './Truck.json'
 import collector from './Collector.json'
 import janitor from './Janitor.json'
 import mcp from './MCP.json'
@@ -12,7 +12,7 @@ import troller from './Troller.json'
 
 export const activityData = activity.data
 export const backOfficerData = backOfficer.data
-export const collectingVehicleData = collectingVehicle.data
+export const truckData = truck.data
 export const collectorData = collector.data
 export const janitorData = janitor.data
 export const mcpData = mcp.data
@@ -23,7 +23,7 @@ export const trollerData = troller.data
 const data = {
     'activity': activityData,
     'backOfficer': backOfficerData,
-    'collectingVehicle': collectingVehicleData,
+    'truck': truckData,
     'collector': collectorData,
     'janitor': janitorData,
     'mcp': mcpData,
