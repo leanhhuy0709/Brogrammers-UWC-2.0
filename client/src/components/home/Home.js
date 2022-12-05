@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from "../navbar/Navbar";
-import './home.css'
+import './home.css';
 
 const Home = () => {
   return (
@@ -22,7 +22,7 @@ const Home = () => {
         </main>
       </div>
       <div className='background-1'>
-      <img width={'100%'} height={'100%'} src = "homeBackground.png"/>
+      <img width={'100%'} height={'100%'} src="/homeBackground.jpg"/>
       </div>
     </>
   )
