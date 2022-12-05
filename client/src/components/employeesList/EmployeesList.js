@@ -49,60 +49,66 @@ const EmployeesList = () => {
 
 
   return (
-    <>
+    <span>
       <Navbar />
       <>
-        <div>Employees</div>
-        <table>
-          <tbody>
-            <tr>
-              <th></th>
-              <th>
-                UserName
-                <span onClick={() => HandleOnSort("username", 0)}>
-                  {reverse[0] ? <CaretDownFill />
-                    : <CaretUpFill />}
-                </span>
-              </th>
-              <th>Dept</th>
-              <th>
-                Status
-                <span onClick={() => HandleOnSort("status", 1)}>
-                  {reverse[1] ? <CaretDownFill />
-                    : <CaretUpFill />}
-                </span>
-              </th>
-              <th>
-                Number of tasks
-                <span onClick={() => HandleOnSort("numberOfTasks", 2)}>
-                  {reverse[2] ? <CaretDownFill />
-                    : <CaretUpFill />}
-                </span>
-              </th>
-              <th></th>
-            </tr>
-            {!employees.length ? <></> :
-              employees.map((value, index) => {
-                return (<tr key={value.id}>
-                  <td><img src={value.avatar} alt='avt'></img></td>
-                  <td>{value.username}
-                  </td>
-                  <td>{value.position ? "Collector" : "Janitor"}</td>
-                  <td>{!value.status ? "Active" : "Not active"}</td>
-                  <td>{value.numberOfTasks}</td>
-                  <td >
-                    {(showMenu && employeeId === value.id) ? (<div>
-                      <div onClick={() => HandleOnHide()}>...</div>
-                      <NavLink to={"/chat/" + employeeId}>Chat</NavLink>
-                      <NavLink to={"/emp-info/" + employeeId}>Profile</NavLink>
-                    </div>) : <div onClick={() => HandleOnShow(value.id)}>...</div>}
-                  </td>
-                </tr>)
-              })}
-          </tbody>
-        </table>
+        <div className='title border-bottom-gray'><h1>Employees</h1></div>
+        <div className='table'>
+          <table id = 'employee-table'>
+            <tbody>
+              <tr>
+                <th className='table-item'></th>
+                <th className='table-item'>
+                  UserName
+                  <span onClick={() => HandleOnSort("username", 0)}>
+                    {reverse[0] ? <CaretDownFill />
+                      : <CaretUpFill />}
+                  </span>
+                </th>
+                <th className='table-item'>Dept</th>
+                <th className='table-item'>
+                  Status
+                  <span onClick={() => HandleOnSort("status", 1)}>
+                    {reverse[1] ? <CaretDownFill />
+                      : <CaretUpFill />}
+                  </span>
+                </th>
+                <th className='table-item'>
+                  Number of tasks
+                  <span onClick={() => HandleOnSort("numberOfTasks", 2)}>
+                    {reverse[2] ? <CaretDownFill />
+                      : <CaretUpFill />}
+                  </span>
+                </th>
+                <th></th>
+              </tr>
+              {!employees.length ? <></> :
+                employees.map((value, index) => {
+                  return (
+                  <tr key={value.id} className = "table-item center">
+                    <td className='table-item background-white'><img className = "rounded-image-medium" src={value.avatar} alt='avt'></img></td>
+                    <td className='table-item'>{value.username}
+                    </td>
+                    <td className='table-item'>{value.position ? "Collector" : "Janitor"}</td>
+                    <td className='table-item'>{!value.status ? "Active" : "Not active"}</td>
+                    <td className='table-item'>{value.numberOfTasks}</td>
+                    <td className='table-item'>
+                      {(showMenu && employeeId === value.id) ? (<div>
+                        <div onClick={() => HandleOnHide()}>...</div>
+                        <br/>
+                        <NavLink to={"/chat/" + employeeId} className = "link-2">Chat</NavLink>
+                        <NavLink to={"/emp-info/" + employeeId} className = "link-2">Profile</NavLink>
+                      </div>) : <div onClick={() => HandleOnShow(value.id)}>...</div>}
+                    </td>  
+                  </tr>
+
+                  )
+                })}
+            </tbody>
+          </table>
+        </div>
       </>
-    </>
+    </span>
 
   )
 }
