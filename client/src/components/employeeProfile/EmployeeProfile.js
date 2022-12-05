@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import api from '../../model/api/api'
 import Navbar from '../navbar/Navbar'
 import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons";
+import "./employeeProfile.css"
 
 const EmployeeProfile = () => {
   const [id] = useState(useParams().id);
@@ -38,45 +39,51 @@ const EmployeeProfile = () => {
     <>
       <Navbar></Navbar>
       <>
-        <div>List of tasks </div>
-        <div>
-          <div><img src={employee.avatar} alt='avt'></img></div>
-          <div>{employee.username}</div>
-          <div>{employee.position ? "Collector" : "Janitor"}</div>
-          <div>{!employee.status ? "Active" : "Offline"}</div>
+        <div className = "title"><h1>List of tasks </h1></div>
+        <div className = 'container-2 border-blue'>
+          <div className = 'profile-image center'>
+            <img className = 'rounded-image-large' src={employee.avatar} alt='avt'/>
+          </div>
+          <div className = 'profile-text'>
+            <h4>{employee.username}</h4>
+            <p>{employee.position ? "Collector" : "Janitor"}</p>
+            <p>Available?_?</p>
+            <p>{!employee.status ? "Active" : "Offline"}</p>
+            
+          </div>
         </div>
-        <div>
-          <table>
-            <tbody>
-              <tr>
-                <th>
-                  RouterID
-                  <span onClick={() => HandleOnSort("routeId", 0)}>
-                    {reverse[0] ? <CaretDownFill />
-                      : <CaretUpFill />}
-                  </span>
-                </th>
-                <th>First MCP</th>
-                <th>Last MCP</th>
-                <th>Time</th>
-                <th>Status</th>
-              </tr>
-              {!tasks.length ? <></> :
-                tasks.map((value, index) => {
-                  return (<tr key={value.id}>
-                    <td>{value.routeId}</td>
-                    <td>{value.firstMCP}</td>
-                    <td>{value.lastMCP}</td>
-                    <td>{value.timestamp}</td>
-                    <td></td>
-                  </tr>)
-                })}
-            </tbody>
-          </table>
-        </div>
+        <table className = 'table'>
+          <tbody>
+            <tr>
+              <th className = 'table-item'>
+                RouteID
+                <span onClick={() => HandleOnSort("routeId", 0)}>
+                  {reverse[0] ? <CaretDownFill />
+                    : <CaretUpFill />}
+                </span>
+              </th>
+              <th className = 'table-item'>First MCP</th>
+              <th className = 'table-item'>Last MCP</th>
+              <th className = 'table-item'>Time</th>
+              <th className = 'table-item'>Status</th>
+              <th/>
+            </tr>
+            {!tasks.length ? <></> :
+              tasks.map((value, index) => {
+                return (<tr key={value.id}>
+                  <td className = 'table-item center'>{value.routeId}</td>
+                  <td className = 'table-item center'>{value.firstMCP}</td>
+                  <td className = 'table-item center'>{value.lastMCP}</td>
+                  <td className = 'table-item center'>{value.timestamp}</td>
+                  <td className = 'table-item center'>Finish ?_?</td>
+                </tr>)
+              })}
+          </tbody>
+        </table>
       </>
     </>
   )
+
 }
 
 export default EmployeeProfile;

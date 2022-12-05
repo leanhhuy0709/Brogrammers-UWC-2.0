@@ -1,0 +1,68 @@
+/*Login Form*/
+* {
+    font-size: 16px;
+    font-family:Verdana, Tahoma, sans-serif;
+}
+
+h1 {
+    font-size: 24px;
+}
+/*-----------------------------------------------*/
+
+.login {
+    padding: 20px;
+    border:2px solid black;
+    width: 400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+.input {
+    display:block;
+    width: 400px;
+    border:1px solid black;
+    border-radius: 5px;  
+    margin: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 0px;
+}
+
+.button {
+    background-color: #3DA35D;
+    color: white;
+    border: none;
+    border-radius: 5px;  
+    width: 132px;
+    height: 40px;
+    margin:  10px 0px 10px 0px;
+    padding: 0;
+}
+
+.rounded-button {
+    background-color: #3DA35D;
+}
+
+@keyframes changeColor {
+    0%   {background-color:#3DA35D;}
+}
+
+.button:hover{
+    background-color: rgb(9, 206, 193);
+    animation-name: changeColor;
+    animation-duration: 2s;
+    border: 2px solid black;
+}
+
+.width400px {
+    width: 400px!important;
+}
+
+.link{
+    color:  rgba(61, 163, 93, 1);
+    text-decoration: none;
+}
+
+.error-message {
+    color: red;
+}

@@ -10,15 +10,15 @@ const TrollersList = () => {
       <Navbar />
       <>
         <div>
-          <NavLink to='/vehicles/trollers'>Controller</NavLink>
-          <NavLink to='/vehicles/trucks'>Collect Vehicle</NavLink>
+          <NavLink to='/vehicles/trollers'>Trollers</NavLink>
+          <NavLink to='/vehicles/trucks'>Trucks</NavLink>
         </div>
         <div>{!trollers.length ? <></> :
           trollers.map((value, index) => {
             return (<div key={value.id}>
-              <img src="" alt="Troller img"></img>
+              <img src="https://static.connect2india.com/c2icd/product_resources/images/garbage-trolley-bin.jpg" alt="Troller img"></img>
               <div>{value.id}</div>
-              <div>{!value.status ? "Available" : "Unavailable"}</div>
+              <div>{value.status ? "Available" : "Unavailable"}</div>
             </div>)
           })}</div>
       </>

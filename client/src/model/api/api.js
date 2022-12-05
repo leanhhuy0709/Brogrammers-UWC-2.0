@@ -83,11 +83,11 @@ const BackOfficerAPI = {
 Object.setPrototypeOf(BackOfficerAPI, BaseAPI)
 
 
-const CollectingVehicleAPI = {
-    name: 'CollectingVehicle',
-    querySet: data.collectingVehicle,
+const TruckAPI = {
+    name: 'Truck',
+    querySet: data.truck,
 }
-Object.setPrototypeOf(CollectingVehicleAPI, BaseAPI)
+Object.setPrototypeOf(TruckAPI, BaseAPI)
 
 
 const CollectorAPI = {
@@ -140,7 +140,7 @@ Object.setPrototypeOf(TrollerAPI, BaseAPI)
 const api = {
     'ActivityAPI': ActivityAPI,
     'BackOfficerAPI': BackOfficerAPI,
-    'CollectingVehicleAPI': CollectingVehicleAPI,
+    'TruckAPI': TruckAPI,
     'CollectorAPI': CollectorAPI,
     'JanitorAPI': JanitorAPI,
     'mcpAPI': mcpAPI,
@@ -149,7 +149,7 @@ const api = {
     'TrollerAPI': TrollerAPI,
 }
 
-export {ActivityAPI, BackOfficerAPI, CollectingVehicleAPI, CollectorAPI, JanitorAPI, mcpAPI, MessageAPI, RouteAPI, TrollerAPI}
+export {ActivityAPI, BackOfficerAPI, TruckAPI, CollectorAPI, JanitorAPI, mcpAPI, MessageAPI, RouteAPI, TrollerAPI}
 
 export default api
 

@@ -1,0 +1,32 @@
+.conversation-container
+{
+    background-color: #D9D9D9;
+    margin: 10px 50px;
+    width: 50%;
+    display: inline-block;
+}
+
+.conversation-container:hover{
+    border: solid black 2px;
+}
+
+
+.conversation-container-image {
+    width: 15%;
+    display: inline-block;
+    height: 100px;
+    padding: 10px;
+    vertical-align: text-bottom;
+}
+
+.conversation-container-text {
+    width: 40%;
+    display: inline-block;
+    height: 120px;
+    vertical-align: text-bottom;
+}
+
+.left {
+    text-align: left!important;
+}
+

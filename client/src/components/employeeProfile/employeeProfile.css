@@ -1,0 +1,27 @@
+
+.container-2 {
+    margin: 0px 40px;
+    padding: 10px;
+}
+
+.border-blue {
+    border: solid #0584FE 2px;
+}
+
+.profile-image {
+    width: 15%;
+    display: inline-block;
+    height: 150px;
+}
+
+.profile-text {
+    width: 80%;
+    display: inline-block;
+    height: 150px;
+}
+
+.rounded-image-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+}
