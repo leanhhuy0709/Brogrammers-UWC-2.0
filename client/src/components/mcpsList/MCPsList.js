@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import Navbar from '../navbar/Navbar';
-import api from '../../model/api/api';
-import { CaretDownFill, CaretUpFill, FunnelFill } from "react-bootstrap-icons";
+import api, { mcpAPI } from '../../model/api/api';
+import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons";
+
 
 
 const MCPsList = () => {
   const [MCPs, setMCPs] = useState(api.mcpAPI.all());
   const [onlyFull, setOnlyFull] = useState(false)
-  const HandleOnSort = (property, reverse) => {
+  const [reverse, setReverse] = useState([false, false, false]);
+
+  const HandleOnSort = (property, idx) => {
     const sortedArray = [...MCPs].sort(function (a, b) {
       var x = a[property]; var y = b[property];
       return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
-    if (reverse) sortedArray.reverse();
+    if (reverse[idx]) sortedArray.reverse();
+    const newReverse = [false]
+    newReverse[idx] = !reverse[idx]
+    setReverse(newReverse)
     setMCPs(sortedArray);
   }
 
@@ -30,47 +36,45 @@ const MCPsList = () => {
       setMCPs(api.mcpAPI.all())
     }
   }
-
+  console.log(MCPs)
 
   return (
     <>
       <Navbar />
       <>
         <div>
-          <div>
-            %Capacity
-            <span onClick={() => HandleOnSort('percentage', false)}>
-              <CaretUpFill />
-            </span>
-            <span onClick={() => HandleOnSort('percentage', true)}>
-              <CaretDownFill />
-            </span>
-          </div>
-          <div>
-            last collected
-            <span onClick={() => HandleOnSort('lastCollected', false)}>
-              <CaretUpFill />
-            </span>
-            <span onClick={() => HandleOnSort('lastCollected', true)}>
-              <CaretDownFill />
-            </span>
-          </div>
-          <div>
-            Capacity
-            <span onClick={() => HandleOnFilterFull()}>
-              <FunnelFill />
-            </span>
-          </div>
+          <table>
+            <tbody>
+              <tr>
+                <th>MCP ID</th>
+                <th>MCP name</th>
+                <th>Capacity
+                  <span onClick={() => HandleOnSort("percentage", 0)}>
+                    {reverse[0] ? <CaretDownFill />
+                      : <CaretUpFill />}
+                  </span>
+                </th>
+                <th>Last visited</th>
+              </tr>
+              {MCPs.map((value, index) => {
+                return (
+                  <tr>
+                    <td>{value.id}</td>
+                    <td>{value.name}</td>
+                    {value.percentage <= 40 ?
+                      <td>{value.percentage}</td> :
+                      value.percentage <= 60 ?
+                        <td>{value.percentage}</td> :
+                        value.percentage <= 80 ?
+                          <td>{value.percentage}</td> :
+                          <td>{value.percentage}</td>}
+                    <td>{value.lastCollected}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
         </div>
-        <div>{!MCPs.length ? <></> :
-          MCPs.map((value, index) => {
-            return (<div key={value.id}>
-              <img src="" alt="MCP img"></img>
-              <div>{value.name}</div>
-              <div>% Capacity: {value.percentage}</div>
-              <div>Last collected: {value.lastCollected}</div>
-            </div>)
-          })}</div>
       </>
     </>
 
