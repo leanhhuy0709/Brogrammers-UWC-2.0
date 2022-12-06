@@ -62,7 +62,17 @@ const AssignTask = () => {
 
           <div>{!selectedRoute.mcpList.length ? <></> :
             selectedRoute.mcpList
-              .map(mcp => (<span>{mcp.name} ({mcp.percentage}%)</span>))
+              .map(mcp => {
+                // remember to replace color !!!
+                if(mcp.percentage <= 40)
+                  return <span style={{color: "green"}}>{mcp.name} ({mcp.percentage}%)</span>
+                else if(mcp.percentage <= 60)
+                  return <span style={{color: "yellow"}}>{mcp.name} ({mcp.percentage}%)</span>
+                else if(mcp.percentage <= 80)
+                  return <span style={{color: "orange"}}>{mcp.name} ({mcp.percentage}%)</span>
+                else
+                  return <span style={{color: "red"}}>{mcp.name} ({mcp.percentage}%)</span>
+              })
               .reduce((acc, x) => acc === null ? x : <>{acc} <span>{'>'}</span> {x}</>, null)
           }</div>
 
