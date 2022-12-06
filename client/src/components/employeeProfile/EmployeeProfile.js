@@ -45,7 +45,7 @@ const EmployeeProfile = () => {
             <img className = 'rounded-image-large' src={employee.avatar} alt='avt'/>
           </div>
           <div className = 'profile-text'>
-            <h4>{employee.username}</h4>
+            <p className="employee-profile-username">{employee.username}</p>
             <p>{employee.position ? "Collector" : "Janitor"}</p>
             <p>Available?_?</p>
             <p>{!employee.status ? "Active" : "Offline"}</p>
