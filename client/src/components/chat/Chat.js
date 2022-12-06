@@ -28,15 +28,15 @@ const Chat = () => {
                 <div className = "conversation-container-image">
                   <img className = "rounded-image-medium" src={person.avatar} alt="Person's avatar" />
                 </div>
-                <div className = "conversation-container-text">
+                <div className = "conversation-container-text text-black">
                 <h3>{`${person.firstName} ${person.lastName}`}</h3>
-                <div className="last-message-container">
-                  <p className="content">{lastMessageContent}</p>
-                  <p className="timestamp">
+                  <p className="text-black">{lastMessageContent}</p>
+                  <p className="text-black">
                     {getLastConversationMessage(conversation.id).timestamp}
                   </p>
                 </div>
-                </div>
+                <div className="three-point-container"><i className="fa-solid fa-ellipsis-vertical three-point"></i></div>
+        
               </div>
             </Link>
           );

@@ -18,10 +18,18 @@
     width: 80%;
     display: inline-block;
     height: 150px;
+    vertical-align: text-bottom;
+    font-size: 25px;
 }
 
 .rounded-image-large {
     width: 150px;
     height: 150px;
     border-radius: 75px;
+}
+
+.employee-profile-username{
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 15px;
 }

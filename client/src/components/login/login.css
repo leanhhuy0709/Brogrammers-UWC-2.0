@@ -1,18 +1,15 @@
 /*Login Form*/
 * {
-    font-size: 16px;
     font-family:Verdana, Tahoma, sans-serif;
 }
 
-h1 {
-    font-size: 24px;
-}
+
 /*-----------------------------------------------*/
 
 .login {
     padding: 20px;
     border:2px solid black;
-    width: 400px;
+    width: 445px;
     position:absolute;
     top:50%;
     left:50%;
@@ -21,7 +18,7 @@ h1 {
 
 .input {
     display:block;
-    width: 400px;
+    width: 100%;
     border:1px solid black;
     border-radius: 5px;  
     margin: 10px 0px 10px 0px;
