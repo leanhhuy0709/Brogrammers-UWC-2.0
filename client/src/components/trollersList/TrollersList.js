@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from '../navbar/Navbar'
 import api from '../../model/api/api';
+import './trollersList.css'
 import { NavLink } from "react-router-dom";
 import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons";
 
@@ -38,18 +39,23 @@ const TrollersList = () => {
     <>
       <Navbar />
       <>
-        <div>
-          <NavLink to='/vehicles/trollers'>Trollers</NavLink>
-          <NavLink to='/vehicles/trucks'>Trucks</NavLink>
+        <div className='title border-bottom-gray'>
+          <div className='left-div'>
+            <h1>Trollers</h1>
+          </div>
+          <div className='right-div'>
+            <NavLink to='/vehicles/trollers' className='navlink'>Trollers</NavLink>
+            <NavLink to='/vehicles/trucks' className='navlink'>Trucks</NavLink>
+          </div>
         </div>
-        <div>
-          <table>
+        <div className='table'>
+          <table id='troller-table'>
             <tbody>
               <tr>
-                <th>Truck ID</th>
-                <th>Used by</th>
-                <th>Location</th>
-                <th>Status
+                <th className='table-item'>Truck ID</th>
+                <th className='table-item'>Used by</th>
+                <th className='table-item'>Location</th>
+                <th className='table-item'>Status
                   <span onClick={() => HandleOnSort("status", 0)}>
                     {reverse[0] ? <CaretDownFill />
                       : <CaretUpFill />}
@@ -59,10 +65,10 @@ const TrollersList = () => {
               {trollers.map((value, index) => {
                 return (
                   <tr>
-                    <td>{value.id}</td>
-                    <td>{value.userName}</td>
-                    <td>{value.location}</td>
-                    <td>{!value.status ? "Available" : "In use"}</td>
+                    <td className='table-item'>{value.id}</td>
+                    <td className='table-item'>{value.userName}</td>
+                    <td className='table-item'>{value.location}</td>
+                    <td className='table-item'>{!value.status ? "Available" : "In use"}</td>
                   </tr>
                 )
               })}
