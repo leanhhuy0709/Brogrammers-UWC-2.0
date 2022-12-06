@@ -2,9 +2,36 @@ import React, { useState } from 'react'
 import Navbar from '../navbar/Navbar'
 import api from '../../model/api/api';
 import { NavLink } from "react-router-dom";
+import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons";
 
 const TrucksList = () => {
-  const [trucks, setTrucks] = useState(api.TruckAPI.all());
+  const [reverse, setReverse] = useState([false]);
+  const getNameById = (id) => {
+    const allCollector = api.CollectorAPI.all();
+    const collector = allCollector.find((value) => {
+      return value.id === id;
+    })
+    if (!collector) return "-";
+    return collector.firstName + " " + collector.lastName;
+  }
+  const [trucks, setTrucks] = useState(() => {
+    const allTruck = api.TruckAPI.all();
+    return allTruck.map((value, index) => {
+      value["userName"] = getNameById(value.uesdById);
+      return value;
+    })
+  });
+  const HandleOnSort = (property, idx) => {
+    const sortedArray = [...trucks].sort(function (a, b) {
+      var x = a[property]; var y = b[property];
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+    if (reverse[idx]) sortedArray.reverse();
+    const newReverse = [false]
+    newReverse[idx] = !reverse[idx]
+    setReverse(newReverse)
+    setTrucks(sortedArray);
+  }
   return (
     <>
       <Navbar />
@@ -13,14 +40,33 @@ const TrucksList = () => {
           <NavLink to='/vehicles/trollers'>Trollers</NavLink>
           <NavLink to='/vehicles/trucks'>Trucks</NavLink>
         </div>
-        <div>{!trucks.length ? <></> :
-          trucks.map((value, index) => {
-            return (<div key={value.id}>
-              <img src="https://www.gannett-cdn.com/-mm-/c4c53adca2900a14bb79e68d4b20551eeb795c12/c=0-31-1350-794/local/-/media/2016/10/31/DetroitFreePress/DetroitFreePress/636135335919148313-GFL-Truck.jpg?width=1200&disable=upscale&format=pjpg&auto=webp" alt="Truck img"></img>
-              <div>{value.id}</div>
-              <div>{value.status ? "Available" : "Unavailable"}</div>
-            </div>)
-          })}</div>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <th>Truck ID</th>
+                <th>Used by</th>
+                <th>Location</th>
+                <th>Status
+                  <span onClick={() => HandleOnSort("status", 0)}>
+                    {reverse[0] ? <CaretDownFill />
+                      : <CaretUpFill />}
+                  </span>
+                </th>
+              </tr>
+              {trucks.map((value, index) => {
+                return (
+                  <tr>
+                    <td>{value.id}</td>
+                    <td>{value.userName}</td>
+                    <td>{value.location}</td>
+                    <td>{!value.status ? "Available" : "In use"}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       </>
     </>
 

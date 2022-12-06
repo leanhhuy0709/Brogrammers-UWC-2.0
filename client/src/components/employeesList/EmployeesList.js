@@ -54,7 +54,7 @@ const EmployeesList = () => {
       <>
         <div className='title border-bottom-gray'><h1>Employees</h1></div>
         <div className='table'>
-          <table id = 'employee-table'>
+          <table id='employee-table'>
             <tbody>
               <tr>
                 <th className='table-item'></th>
@@ -85,22 +85,21 @@ const EmployeesList = () => {
               {!employees.length ? <></> :
                 employees.map((value, index) => {
                   return (
-                  <tr key={value.id} className = "table-item center">
-                    <td className='table-item background-white'><img className = "rounded-image-medium" src={value.avatar} alt='avt'></img></td>
-                    <td className='table-item'>{value.username}
-                    </td>
-                    <td className='table-item'>{value.position ? "Collector" : "Janitor"}</td>
-                    <td className='table-item'>{!value.status ? "Active" : "Not active"}</td>
-                    <td className='table-item'>{value.numberOfTasks}</td>
-                    <td className='table-item'>
-                      {(showMenu && employeeId === value.id) ? (<div>
-                        <div onClick={() => HandleOnHide()}>...</div>
-                        <br/>
-                        <NavLink to={"/chat/" + employeeId} className = "link-2">Chat</NavLink>
-                        <NavLink to={"/emp-info/" + employeeId} className = "link-2">Profile</NavLink>
-                      </div>) : <div onClick={() => HandleOnShow(value.id)}>...</div>}
-                    </td>  
-                  </tr>
+                    <tr key={value.id} className="table-item center">
+                      <td className='table-item background-white'><img className="rounded-image-medium" src={value.avatar} alt='avt'></img></td>
+                      <td className='table-item'>{value.username}
+                      </td>
+                      <td className='table-item'>{value.position ? "Collector" : "Janitor"}</td>
+                      <td className='table-item'>{!value.status ? "Active" : "Not active"}</td>
+                      <td className='table-item'>{value.numberOfTasks}</td>
+                      <td className='table-item'>
+                        {(showMenu && employeeId === value.id) ? (<div>
+                          <div onClick={() => HandleOnHide()}>...</div>
+                          <br />
+                          <NavLink to={"/emp-info/" + employeeId} className="link-2">Profile</NavLink>
+                        </div>) : <div onClick={() => HandleOnShow(value.id)}>...</div>}
+                      </td>
+                    </tr>
 
                   )
                 })}

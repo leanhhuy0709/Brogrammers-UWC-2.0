@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import GlobalContext from "./context/GlobalContext"
-import {useContext} from "react";
+import { useContext } from "react";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Home from "./components/home/Home";
 import Profile from "./components/profile/Profile";
@@ -17,7 +17,7 @@ import ErrorPage from "./components/errorPage/ErrorPage";
 import Conversation from "./components/conversation/Conversation";
 
 function App() {
-  const  { user} = useContext(GlobalContext);
+  const { user } = useContext(GlobalContext);
   return (
     <Router>
       <Routes>
@@ -29,8 +29,8 @@ function App() {
           <Route path="/assign" element={<AssignTask />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/conversation/:id" element={<Conversation />} />
-          <Route path="/vehicles/trucks" element={<TrucksList />} />
           <Route path="/vehicles/trollers" element={<TrollersList />} />
+          <Route path="/vehicles/trucks" element={<TrucksList />} />
           <Route path="/mcps" element={<MCPsList />} />
         </Route>
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
