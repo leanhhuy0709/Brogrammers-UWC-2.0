@@ -60,24 +60,22 @@ const EmployeesList = () => {
                 <th className='table-item'></th>
                 <th className='table-item'>
                   UserName
-                  <span onClick={() => HandleOnSort("username", 0)}>
-                    {reverse[0] ? <CaretDownFill />
-                      : <CaretUpFill />}
+                  <span onClick={() => HandleOnSort("username", 0)} className="filter-button">
+                    {reverse[0] ? 
+                      <CaretUpFill /> : <CaretDownFill />}
                   </span>
                 </th>
                 <th className='table-item'>Dept</th>
                 <th className='table-item'>
                   Status
-                  <span onClick={() => HandleOnSort("status", 1)}>
-                    {reverse[1] ? <CaretDownFill />
-                      : <CaretUpFill />}
+                  <span onClick={() => HandleOnSort("status", 1)} className="filter-button">
+                    {reverse[1] ? <CaretUpFill /> : <CaretDownFill />}
                   </span>
                 </th>
                 <th className='table-item'>
                   Number of tasks
-                  <span onClick={() => HandleOnSort("numberOfTasks", 2)}>
-                    {reverse[2] ? <CaretDownFill />
-                      : <CaretUpFill />}
+                  <span onClick={() => HandleOnSort("numberOfTasks", 2)} className="filter-button">
+                    {reverse[2] ? <CaretUpFill /> : <CaretDownFill />}
                   </span>
                 </th>
                 <th></th>
@@ -90,7 +88,7 @@ const EmployeesList = () => {
                     <td className='table-item'>{value.username}
                     </td>
                     <td className='table-item'>{value.position ? "Collector" : "Janitor"}</td>
-                    <td className={!value.status ? 'table-item fw-bold text-green' : 'table-item fw-bold text-red'}>{!value.status ? 
+                    <td className={!value.status ? 'table-item text-green' : 'table-item text-red'}>{!value.status ? 
             (<div className='available-container'><span className='dot'></span>Available</div>) : 
             (<div className='unavailable-container'><span className='dot-2'></span>Unavailable</div>)}</td>
                     <td className='table-item'>{value.numberOfTasks}</td>
