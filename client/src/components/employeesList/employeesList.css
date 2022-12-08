@@ -21,6 +21,7 @@
 .table-item {
     width: 20%;
     padding: 10px;
+    font-weight: normal;
 }
 
 .table tr:nth-child(even){background-color: #f2f2f2;}
