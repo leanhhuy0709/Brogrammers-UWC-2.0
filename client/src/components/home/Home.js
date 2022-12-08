@@ -21,9 +21,9 @@ const Home = () => {
           </ol>
         </main>
       </div>
-      <div className="background-1">
-      <img width={"100%"} height={"100%"} src = "homeBackground.png" style={{pointerEvents: "none"}}/>
-      </div>
+      <div className="background-1"
+    style = {{backgroundImage: `url(homeBackground.png)`}}>
+    </div>
     </>
   )
 }
