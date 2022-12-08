@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import GlobalContext from "../../context/GlobalContext";
 import Navbar from "../navbar/Navbar";
+import moment from "moment"
 import './conversation.css'
 
 const Conversation = () => {
-  const { user, getPersonById, getConversationById } =
+  const { user, getPersonById, getConversationById, formatDateTimeToISO } =
     useContext(GlobalContext);
   const navigate = useNavigate()
   const { id: conversationId } = useParams();
@@ -22,6 +23,11 @@ const Conversation = () => {
     if (message.senderId === user.id) return true;
     return false;
   };
+
+  const isWithin60m = (datetime) => {
+    console.log(Date.now() - new Date(formatDateTimeToISO(datetime)))
+    return (Date.now() - new Date(formatDateTimeToISO(datetime))) < 60 * 60 * 1000;
+  }
 
   return (
     <>
@@ -62,9 +68,8 @@ const Conversation = () => {
                 <div className="msg-bubble">
                   <div className="msg-info">
                     <div className="msg-info-name"></div>
-                    <div className="msg-info-time">{message.timestamp}</div>
+                    <div className="msg-info-time">{isWithin60m(message.timestamp) ? moment(formatDateTimeToISO(message.timestamp)).fromNow() : message.timestamp}</div>
                   </div>
-          
                   <div className="msg-text">
                   {message.content}
                   </div>
@@ -83,9 +88,8 @@ const Conversation = () => {
               <div className="msg-bubble">
                 <div className="msg-info">
                   <div className="msg-info-name"></div>
-                  <div className="msg-info-time">{message.timestamp}</div>
+                  <div className="msg-info-time">{isWithin60m(message.timestamp) ? moment(formatDateTimeToISO(message.timestamp)).fromNow() : message.timestamp}</div>
                 </div>
-        
                 <div className="msg-text">
                 {message.content}
                 </div>

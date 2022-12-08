@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import GlobalContext from "../../context/GlobalContext"
 import { validateChangePassword } from "../../controller/controller";
 
-const ChangePassword = ({showChange, setShowChange}) => {
+const ChangePassword = () => {
 
   const {user} = useContext(GlobalContext);
   const [oldPassword, setOldPassword] = useState("");
@@ -39,7 +39,6 @@ const ChangePassword = ({showChange, setShowChange}) => {
         </> : <>
           {message ? <p className="success-message">{message}</p> : null}
         </>}
-        <button onClick={() => setShowChange(false)}>Cancel</button>
         <button onClick={(e) => handleChangePassword(e)}>Save</button>
       </form>
     </div>

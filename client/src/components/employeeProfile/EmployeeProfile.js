@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom'
 import api from '../../model/api/api'
 import Navbar from '../navbar/Navbar'
 import { CaretDownFill, CaretUpFill } from "react-bootstrap-icons";
+import { useNavigate } from 'react-router-dom';
 import "./employeeProfile.css"
 
 const EmployeeProfile = () => {
+  const navigate = useNavigate()
   const [id] = useState(useParams().id);
   const [employee] = useState(api.CollectorAPI.get_by_id(id) || api.JanitorAPI.get_by_id(id));
   const [reverse, setReverse] = useState([false]);
@@ -45,11 +47,11 @@ const EmployeeProfile = () => {
             <img className = 'rounded-image-large' src={employee.avatar} alt='avt'/>
           </div>
           <div className = 'profile-text'>
-            <p className="employee-profile-username">{employee.username}</p>
+            <h1>{`${employee.firstName} ${employee.lastName}`}</h1>
+            <h6 className="employee-profile-username">@{employee.username}</h6>
             <p>{employee.position ? "Collector" : "Janitor"}</p>
-            <p>Available?_?</p>
-            <p>{!employee.status ? "Active" : "Offline"}</p>
-            
+            <p>{!employee.status ? "Online" : "Offline"}</p>
+            <p>Member since {employee.memberSince}</p>
           </div>
         </div>
         <table className = 'table'>
@@ -65,7 +67,7 @@ const EmployeeProfile = () => {
               <th className = 'table-item'>First MCP</th>
               <th className = 'table-item'>Last MCP</th>
               <th className = 'table-item'>Time</th>
-              <th className = 'table-item'>Status</th>
+              {/* <th className = 'table-item'>Status</th> */}
               <th/>
             </tr>
             {!tasks.length ? <></> :
@@ -75,7 +77,7 @@ const EmployeeProfile = () => {
                   <td className = 'table-item center'>{value.firstMCP}</td>
                   <td className = 'table-item center'>{value.lastMCP}</td>
                   <td className = 'table-item center'>{value.timestamp}</td>
-                  <td className = 'table-item center'>Finish ?_?</td>
+                  {/* <td className = 'table-item center'>Finish ?_?</td> */}
                 </tr>)
               })}
           </tbody>
