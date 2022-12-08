@@ -30,7 +30,7 @@ const Chat = () => {
                   <img className = "rounded-image-medium" src={person.avatar} alt="Person's avatar" />
                 </div>
                 <div className = "conversation-container-text text-black">
-                <h2 style={{fontSize: "30px"}}>{`${person.firstName} ${person.lastName}`}</h2>
+                <h2 style={{fontSize: "30px", fontWeight: "normal"}}>{`${person.firstName} ${person.lastName}`}</h2>
                   <p style={{fontSize: "18px", marginTop: "10px"}} className="text-black">{lastMessageContent}</p>
                   <p style={{fontSize: "12px"}} className="text-black">
                   {momemt(formatDateTimeToISO(getLastConversationMessage(conversation.id).timestamp)).fromNow()}

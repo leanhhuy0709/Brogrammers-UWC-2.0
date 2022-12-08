@@ -44,7 +44,7 @@ const Conversation = () => {
             ><div className={`status-circle ${person.status ? "status-color-online" : "status-color-offline"}`}/></div>
             <div className="msg-username-container">
             <br/>
-            <b className="msg-username"> {`${person.firstName} ${person.lastName}`}</b>
+            <span className="msg-username"> {`${person.firstName} ${person.lastName}`}</span>
             <span className="msg-position">{person.position ? " Collector" : " Janitor"}</span>
             <br/>
             <span className="msg-status">{person.status ? "Online" : "Offline"}</span>
