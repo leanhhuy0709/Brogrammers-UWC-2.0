@@ -4,8 +4,14 @@
     border-radius: 50px;
 }
 
+.rounded-image-small {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
 .title {
-    margin: 0px 40px;
+    margin: 20px 40px;
 }
 
 .border-bottom-gray {
@@ -37,8 +43,21 @@
     animation-name: changeColor;
     animation-duration: 2s;
     border: 2px solid black;
+    padding: 8px;
 }
 
 .background-white {
     background-color: white;
+}
+
+.text-green {
+    color: #00B14F;
+}
+
+.text-red {
+    color: #FF0000;
+}
+
+.fw-bold {
+    font-weight: bold;
 }
