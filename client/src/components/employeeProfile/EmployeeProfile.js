@@ -11,15 +11,21 @@ const EmployeeProfile = () => {
   const [id] = useState(useParams().id);
   const [employee] = useState(api.CollectorAPI.get_by_id(id) || api.JanitorAPI.get_by_id(id));
   const [reverse, setReverse] = useState([false]);
+  const getMCPNameById = (id, allMCP) => {
+    for (let i = 0; i < allMCP.length; i++)
+      if (allMCP[i]["id"] === id)
+        return allMCP[i]["name"];
+  }
   const [tasks, setTasks] = useState(() => {
     const allTask = api.ActivityAPI.all();
+    const allMCP = api.mcpAPI.all();
     const employeeTasks = allTask.filter((value, index) => {
       return value.employeesId.includes(id);
     })
     return employeeTasks.map((value, index) => {
       const route = api.RouteAPI.get_by_id(value.routeId);
-      value["firstMCP"] = route.MCPIdList[0];
-      value["lastMCP"] = route.MCPIdList.at(-1);
+      value["firstMCP"] = getMCPNameById(route.MCPIdList[0], allMCP);
+      value["lastMCP"] = getMCPNameById(route.MCPIdList.at(-1), allMCP);
       return value;
     })
   })
@@ -74,7 +80,7 @@ const EmployeeProfile = () => {
               <th className = 'table-item-2'>Last MCP</th>
               <th className = 'table-item-2'>Time completed</th>
               {/* <th className = 'table-item'>Status</th> */}
-              <th/>
+              <th />
             </tr>
             {!tasks.length ? <></> :
               tasks.map((value, index) => {
