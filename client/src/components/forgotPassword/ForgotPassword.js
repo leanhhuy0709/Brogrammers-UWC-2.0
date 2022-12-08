@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './forgotPassword.css'
 
 const EmailSent = () => {
 
@@ -9,12 +10,17 @@ const EmailSent = () => {
   }
 
   return (
-    <div className="login">
+    <>
+    <div className="login-2">
       <h1>Email sent.</h1>
-      <p>If the email you entered is valid, you should receive an email with a link to reset your password shortly. Check your <strong>"Spam"</strong> folder if you can't see the email.</p>
+      <p style={{marginTop: "30px", marginBottom: "30px"}}>If the email you entered is valid, you should receive an email with a link to reset your password shortly. Check your <strong>"Spam"</strong> folder if you can't see the email.</p>
       <h6>Did not receive the email?</h6>
-      <button onClick={() => resendEmail()} className = "button width400px">Resend Email</button>
+      <div className="center"><button onClick={() => resendEmail()} className = "button width400px">Resend Email</button></div>
     </div>
+    <div className="background-2"
+    style = {{backgroundImage: `url(homeBackground.png)`}}>
+    </div>
+    </>
   )
 }
 
@@ -33,11 +39,14 @@ const ForgotPassword = () => {
   }
 
   return (
-    sent ? (<EmailSent />) : (<div className="login">
+    sent ? (<EmailSent />) : (
+      <>
+    <div className="login-2">
     <h1>Forgot password</h1>
-    <p>Enter your email below. You will receive a email with a link to reset your password.</p>
-    <form onSubmit={(e) => handleSendEmail(e)}>
-      <label htmlFor="emailInput">Email</label>
+    <p style={{marginTop: "30px", marginBottom: "30px"}}>Enter your email below. You will receive a email with a link to reset your password.</p>
+    
+      <form onSubmit={(e) => handleSendEmail(e)}>
+      <label htmlFor="emailInput"><b>Email</b></label>
       <input
         required
         type="email"
@@ -47,9 +56,15 @@ const ForgotPassword = () => {
         className = "input"
       />
       <br/>
-      <button type="submit" className = "button width400px">Submit</button>
+      <div className="center"><button type="submit" className = "button width400px">Submit</button></div>
     </form>
-  </div>)
+  </div>
+  <div className="background-2"
+  style = {{backgroundImage: `url(homeBackground.png)`}}>
+  </div>
+  </>
+  )
+
   )
 }
 
