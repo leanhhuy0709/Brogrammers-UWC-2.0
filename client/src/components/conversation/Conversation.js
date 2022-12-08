@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import GlobalContext from "../../context/GlobalContext";
 import Navbar from "../navbar/Navbar";
-import moment from "moment"
-import './conversation.css'
+import './conversation.css';
+import moment from "moment";
 
 const Conversation = () => {
   const { user, getPersonById, getConversationById, formatDateTimeToISO } =
@@ -23,7 +23,6 @@ const Conversation = () => {
     if (message.senderId === user.id) return true;
     return false;
   };
-
   const isWithin60m = (datetime) => {
     console.log(Date.now() - new Date(formatDateTimeToISO(datetime)))
     return (Date.now() - new Date(formatDateTimeToISO(datetime))) < 60 * 60 * 1000;
@@ -43,10 +42,12 @@ const Conversation = () => {
                 className="msg-img-2"
                 style = {{backgroundImage: `url(${person.avatar})`}}
             ><div className={`status-circle ${person.status ? "status-color-online" : "status-color-offline"}`}/></div>
-            {person.status ? "Online" : "Offline"}
             <div className="msg-username-container">
+            <br/>
             <b className="msg-username"> {`${person.firstName} ${person.lastName}`}</b>
             <span className="msg-position">{person.position ? " Collector" : " Janitor"}</span>
+            <br/>
+            <span className="msg-status">{person.status ? "Online" : "Offline"}</span>
             </div>
             <div className="msg-info-button-container">
               <i className="fa-solid fa-circle-info info-button"/>
@@ -59,6 +60,7 @@ const Conversation = () => {
           messages.map((message, index) => {
             if (!userIsSender(message))
             return (
+              <span className="tooltip-h">
               <div key = {index} className="msg left-msg">
                 <div
                 className="msg-img"
@@ -66,18 +68,19 @@ const Conversation = () => {
                 />
           
                 <div className="msg-bubble">
-                  <div className="msg-info">
-                    <div className="msg-info-name"></div>
-                    <div className="msg-info-time">{isWithin60m(message.timestamp) ? moment(formatDateTimeToISO(message.timestamp)).fromNow() : message.timestamp}</div>
-                  </div>
                   <div className="msg-text">
                   {message.content}
                   </div>
                 </div>
-              </div>
+                <div className="chat-three-point-container"><i className="fa-solid fa-ellipsis-vertical chat-three-point"/></div>
+
+                </div>
+              <div className="msg-timestamp-left tooltip">{isWithin60m(message.timestamp) ? moment(formatDateTimeToISO(message.timestamp)).fromNow() : message.timestamp}</div>
+              </span>
             );
             else
             return (
+              <span className="tooltip-h">
               <div key = {index} className="msg right-msg">
               <div
               className="msg-img"
@@ -86,15 +89,18 @@ const Conversation = () => {
               </div>
       
               <div className="msg-bubble">
-                <div className="msg-info">
-                  <div className="msg-info-name"></div>
-                  <div className="msg-info-time">{isWithin60m(message.timestamp) ? moment(formatDateTimeToISO(message.timestamp)).fromNow() : message.timestamp}</div>
-                </div>
                 <div className="msg-text">
+                
                 {message.content}
+                
                 </div>
+                
               </div>
+              <div className="chat-three-point-container"><i className="fa-solid fa-ellipsis-vertical chat-three-point"/></div>
+              
           </div>
+          <div className="msg-timestamp-right tooltip">{isWithin60m(message.timestamp) ? moment(formatDateTimeToISO(message.timestamp)).fromNow() : message.timestamp}</div>
+          </span>
             );
           })
         }
