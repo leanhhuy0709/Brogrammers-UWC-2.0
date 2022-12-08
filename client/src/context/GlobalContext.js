@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { getConversationsList, getLastConversationMessage, getLoggedInUser, getPersonById, formatDateToInput, getConversationById } from "../controller/controller";
+import { getConversationsList, getLastConversationMessage, getLoggedInUser, getPersonById, formatDateToInput, getConversationById, formatDateTimeToISO } from "../controller/controller";
 
 const GlobalContext = createContext();
 
@@ -10,7 +10,7 @@ export const GlobalContextProvider = ({ children }) => {
 
   const conversationsList = getConversationsList(user?.id);
   
-  return <GlobalContext.Provider value={{ formatDateToInput, user, setUser, conversationsList, getLastConversationMessage, getPersonById, getConversationById }}>
+  return <GlobalContext.Provider value={{ formatDateToInput, user, setUser, conversationsList, getLastConversationMessage, getPersonById, getConversationById, formatDateTimeToISO }}>
     {children}
   </GlobalContext.Provider>;
 };

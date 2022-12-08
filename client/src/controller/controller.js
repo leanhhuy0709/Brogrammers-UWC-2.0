@@ -5,7 +5,7 @@ export const formatDateToInput = (dateString) => {
   return dateString.split("/").reverse().join("-");
 }
 
-const formatDateTimeToISO = (dateTimeString) => {
+export const formatDateTimeToISO = (dateTimeString) => {
   // change date format from dd/mm/yyyy to yyyy-mm-ddThh:MM:ssto put in new Date()
   return formatDateToInput(dateTimeString.slice(0, 10)) + "T" + dateTimeString.slice(11)
 }

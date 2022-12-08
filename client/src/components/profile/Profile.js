@@ -16,8 +16,6 @@ const Profile = () => {
   const [id, setId] = useState(user.id);
   const [username, setUsername] = useState(user.username);
   const [memberSince, setMemberSince] = useState(formatDateToInput(user.memberSince));
-  const [password, setPassword] = useState(user.password);
-  const [showChange, setShowChange] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,14 +52,9 @@ const Profile = () => {
 
         <label htmlFor="memberSinceInput">Member since</label>
         <input type="date" id="memberSinceInput" required disabled value={memberSince} />
-
-        {showChange ? <ChangePassword showChange={showChange} setShowChange={setShowChange} /> : <>
-          <label htmlFor="passwordInput">Password</label>
-          <input type="password" id="passwordInput" required disabled value={password} />
-          <button onClick={() => setShowChange(true)}>Change</button>
-        </>}
-
         <button type="submit">Save changes</button>
+
+        <ChangePassword />
       </form>
     </main>
     </>

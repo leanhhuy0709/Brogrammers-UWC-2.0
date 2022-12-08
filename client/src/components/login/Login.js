@@ -1,24 +1,24 @@
-
-
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { validateLogin } from "../../controller/controller";
 import { useNavigate } from "react-router-dom";
-
-import './login.css';
+import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
+import "./login.css";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const usernameRef = useRef();
+  const passwordRef = useRef();
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const ERROR_MESSAGE = "Invalid login credentials! Please try again.";
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const {user, status} = validateLogin(username, password);
+    const { user, status } = validateLogin(
+      usernameRef.current.value,
+      passwordRef.current.value
+    );
     if (status) {
-      setUsername("");
-      setPassword("");
       localStorage.setItem("userId", user.id);
       navigate("/");
       navigate(0);
@@ -31,36 +31,40 @@ const Login = () => {
   return (
     <div className="login">
       <h1>Login</h1>
-      <form onSubmit={(e) => handleLoginSubmit(e)}>
+      <form>
         <label htmlFor="usernameInput">Username</label>
         <input
           required
           type="text"
           id="usernameInput"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className = "input width400px"
+          ref={usernameRef}
+          className="input width400px"
         />
         <label htmlFor="passwordInput">Password</label>
         <input
           required
-          type="password"
+          type={showPassword ? "text" : "password"}
           id="passwordInput"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className = "input width400px"
+          ref={passwordRef}
+          className="input width400px"
         />
-        {errorMessage ? <p className = "error-message">{errorMessage}</p> : null}
-        <label>Forgot your password?</label>
-        <a href="/forgot" class = "link">Reset password</a>
-        <button type="submit" className = "button width400px">Login</button>
-        <label>No account?</label>
-        <a href="#" class = "link">Register</a>
+        <span onClick={() => setShowPassword(!showPassword)}>
+          {showPassword ? <EyeSlashFill /> : <EyeFill />}
+        </span>
+        {errorMessage ? <p className="error-message">{errorMessage}</p> : null}
+        <label>Forgot your password? </label>
+        <a href="/forgot" class="link">
+          Reset password
+        </a>
+        <button
+          onClick={(e) => handleLoginSubmit(e)}
+          className="button width400px"
+        >
+          Login
+        </button>
       </form>
     </div>
   );
 };
 
 export default Login;
-
-
