@@ -58,7 +58,6 @@
     display: inline-block;
     padding: 0px 10px;
     color: #1FA750;
-    font-weight: bold;
     border-radius: 15px;
 }
 .dot {
@@ -83,6 +82,5 @@
     display: inline-block;
     padding: 0px 10px;
     color: #FF0000;
-    font-weight: bold;
     border-radius: 15px;
 }
