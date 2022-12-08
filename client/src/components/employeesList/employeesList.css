@@ -11,7 +11,8 @@
 }
 
 .title {
-    margin: 20px 40px;
+    margin-left: 40px;
+    margin-top: 20px;
 }
 
 .border-bottom-gray {
@@ -19,15 +20,17 @@
 }
 
 .table-item {
-    width: 20%;
-    padding: 10px;
     font-weight: normal;
+    padding: 10px;
 }
 
 .table tr:nth-child(even){background-color: #f2f2f2;}
 
-.table {
-    margin: 0px 40px;
+
+.table{
+    border-collapse: separate;
+    border-spacing: 0em 0px; 
+    width: calc(100vw - 40px);
 }
 
 .link-2 {
@@ -65,5 +68,12 @@
 
 .filter-button{
     position: relative;
-    top: 2px;
+    bottom: 4px;
+    font-size: 5px;
+    background-color: #979797;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 3.75px 5px;
+    border-radius: 50%;
 }
