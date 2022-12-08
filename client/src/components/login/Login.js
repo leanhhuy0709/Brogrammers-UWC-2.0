@@ -1,24 +1,24 @@
-import React, { useRef, useState } from "react";
+
+
+import React, { useState } from "react";
 import { validateLogin } from "../../controller/controller";
 import { useNavigate } from "react-router-dom";
-import { EyeFill, EyeSlashFill } from "react-bootstrap-icons";
-import "./login.css";
+
+import './login.css';
 
 const Login = () => {
   const navigate = useNavigate();
-  const usernameRef = useRef();
-  const passwordRef = useRef();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const ERROR_MESSAGE = "Invalid login credentials! Please try again.";
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const { user, status } = validateLogin(
-      usernameRef.current.value,
-      passwordRef.current.value
-    );
+    const {user, status} = validateLogin(username, password);
     if (status) {
+      setUsername("");
+      setPassword("");
       localStorage.setItem("userId", user.id);
       navigate("/");
       navigate(0);
@@ -27,44 +27,60 @@ const Login = () => {
       setErrorMessage(ERROR_MESSAGE);
     }
   };
+  const handleTogglePassword = () => {
+    const psw = document.getElementById("passwordInput");
+    const togglePsw = document.getElementById("togglePassword");
+
+    if (psw.type == "password") psw.type = "text";
+    else psw.type = "password";
+
+    if (togglePsw.className == "far fa-eye-slash") togglePsw.className = "far fa-eye";
+    else togglePsw.className = "far fa-eye-slash";
+
+  }
 
   return (
+    <>
     <div className="login">
-      <h1>Login</h1>
-      <form>
+      <div className="center" style={{marginTop: "20px"}}><h1>Login</h1></div>
+      <form onSubmit={(e) => handleLoginSubmit(e)}>
         <label htmlFor="usernameInput">Username</label>
+        <div className="center">
         <input
           required
           type="text"
           id="usernameInput"
-          ref={usernameRef}
-          className="input width400px"
-        />
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className = "input width400px"
+        /></div>
         <label htmlFor="passwordInput">Password</label>
         <input
           required
-          type={showPassword ? "text" : "password"}
+          type="password"
           id="passwordInput"
-          ref={passwordRef}
-          className="input width400px"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className = "input"
         />
-        <span onClick={() => setShowPassword(!showPassword)}>
-          {showPassword ? <EyeSlashFill /> : <EyeFill />}
-        </span>
-        {errorMessage ? <p className="error-message">{errorMessage}</p> : null}
-        <label>Forgot your password? </label>
-        <a href="/forgot" class="link">
-          Reset password
-        </a>
-        <button
-          onClick={(e) => handleLoginSubmit(e)}
-          className="button width400px"
-        >
-          Login
+        <button className="toggle-password" onClick={handleTogglePassword} type="button">
+          <i className="far fa-eye-slash" id="togglePassword"/>
         </button>
+        {errorMessage ? <p className = "error-message">{errorMessage}</p> : null}
+        
+        <div className="center">Forgot your password? <a href="/forgot" class = "link">Reset password</a></div>
+        
+        <div className="center"><button type="submit" className = "button"><h2>Login</h2></button></div>
       </form>
     </div>
+
+    <div className="background-2"
+    style = {{backgroundImage: `url(homeBackground.png)`}}>
+    </div>
+    </>
   );
 };
 
 export default Login;
+
+
